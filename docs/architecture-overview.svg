@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">TS_TextMarkerCore architecture overview</title>
+  <desc id="desc">TS_TextMarkerCore owns the annotation JSON model, validation, serialization, and matching logic. Viewer and Editor depend on the Core, while the Core stays independent from UI code.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="48%" stop-color="#182033"/>
+      <stop offset="100%" stop-color="#0f3d3e"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#78e0d0"/>
+      <stop offset="100%" stop-color="#7c8cff"/>
+    </linearGradient>
+    <linearGradient id="viewer" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffcf70"/>
+      <stop offset="100%" stop-color="#ff8a65"/>
+    </linearGradient>
+    <linearGradient id="editor" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#b8f07a"/>
+      <stop offset="100%" stop-color="#42c6a4"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerHeight="12" markerWidth="12" orient="auto" refX="10" refY="6">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#cbd5e1"/>
+    </marker>
+    <style>
+      .label { fill: #f8fafc; font-family: Inter, Segoe UI, Arial, sans-serif; font-weight: 700; letter-spacing: 0; }
+      .body { fill: #dbeafe; font-family: Inter, Segoe UI, Arial, sans-serif; font-weight: 500; letter-spacing: 0; }
+      .dark { fill: #111827; font-family: Inter, Segoe UI, Arial, sans-serif; font-weight: 800; letter-spacing: 0; }
+      .small-dark { fill: #1f2937; font-family: Inter, Segoe UI, Arial, sans-serif; font-weight: 650; letter-spacing: 0; }
+      .chip { fill: rgba(255,255,255,0.14); stroke: rgba(255,255,255,0.24); stroke-width: 1; }
+      .line { stroke: #cbd5e1; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="560" rx="0" fill="url(#bg)"/>
+  <path d="M0 448 C172 408 264 487 420 444 C574 402 676 302 854 330 C1014 355 1094 471 1200 425 L1200 560 L0 560 Z" fill="#102a43" opacity="0.55"/>
+  <path d="M0 81 C150 52 282 99 410 74 C591 39 699 23 855 84 C987 136 1088 128 1200 88" fill="none" stroke="#62d6c7" stroke-width="3" opacity="0.26"/>
+
+  <text x="600" y="62" text-anchor="middle" class="label" font-size="34">One shared annotation core</text>
+  <text x="600" y="96" text-anchor="middle" class="body" font-size="18">JSON model, validation, serialization, and text matching without UI dependencies</text>
+
+  <g filter="url(#shadow)">
+    <rect x="365" y="144" width="470" height="182" rx="18" fill="url(#core)"/>
+    <text x="600" y="196" text-anchor="middle" class="dark" font-size="36">TS_TextMarkerCore</text>
+    <text x="600" y="230" text-anchor="middle" class="small-dark" font-size="18">framework-independent package</text>
+    <g>
+      <rect x="405" y="262" width="110" height="34" rx="17" fill="#ffffff" opacity="0.72"/>
+      <text x="460" y="284" text-anchor="middle" class="small-dark" font-size="14">Types</text>
+      <rect x="532" y="262" width="116" height="34" rx="17" fill="#ffffff" opacity="0.72"/>
+      <text x="590" y="284" text-anchor="middle" class="small-dark" font-size="14">JSON</text>
+      <rect x="665" y="262" width="128" height="34" rx="17" fill="#ffffff" opacity="0.72"/>
+      <text x="729" y="284" text-anchor="middle" class="small-dark" font-size="14">Logic</text>
+    </g>
+  </g>
+
+  <g>
+    <rect x="126" y="159" width="180" height="132" rx="14" class="chip"/>
+    <text x="216" y="198" text-anchor="middle" class="label" font-size="20">Annotation JSON</text>
+    <text x="216" y="228" text-anchor="middle" class="body" font-size="15">version, document,</text>
+    <text x="216" y="252" text-anchor="middle" class="body" font-size="15">labels, annotations</text>
+  </g>
+
+  <g>
+    <rect x="894" y="159" width="180" height="132" rx="14" class="chip"/>
+    <text x="984" y="198" text-anchor="middle" class="label" font-size="20">No UI Inside</text>
+    <text x="984" y="228" text-anchor="middle" class="body" font-size="15">no DOM, PDF.js</text>
+    <text x="984" y="252" text-anchor="middle" class="body" font-size="15">or viewer imports</text>
+  </g>
+
+  <path class="line" d="M306 225 L352 225"/>
+  <path class="line" d="M848 225 L894 225"/>
+
+  <path class="line" d="M506 326 C484 356 437 374 364 389"/>
+  <path class="line" d="M694 326 C716 356 763 374 836 389"/>
+
+  <g filter="url(#shadow)">
+    <rect x="116" y="382" width="370" height="104" rx="16" fill="url(#viewer)"/>
+    <text x="301" y="425" text-anchor="middle" class="dark" font-size="28">TS_TextMarkerViewer</text>
+    <text x="301" y="458" text-anchor="middle" class="small-dark" font-size="16">read-only rendering consumes Core data</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="714" y="382" width="370" height="104" rx="16" fill="url(#editor)"/>
+    <text x="899" y="425" text-anchor="middle" class="dark" font-size="28">TS_TextMarkerEditor</text>
+    <text x="899" y="458" text-anchor="middle" class="small-dark" font-size="16">edits and exports annotation JSON</text>
+  </g>
+
+  <g>
+    <rect x="437" y="506" width="326" height="32" rx="16" fill="#ffffff" opacity="0.14"/>
+    <text x="600" y="527" text-anchor="middle" class="body" font-size="14">Dependency direction: Core &lt;- Viewer &lt;- Editor</text>
+  </g>
+</svg>

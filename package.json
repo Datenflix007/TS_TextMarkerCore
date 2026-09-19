@@ -1,0 +1,39 @@
+{
+  "name": "@datenflix007/ts-text-marker-core",
+  "version": "0.1.0",
+  "description": "Shared annotation types and utilities for TS TextMarker modules.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:consumer": "node --test tests/consumer-dist.test.mjs",
+    "check": "npm run build && npm run test && npm run test:consumer"
+  },
+  "keywords": [
+    "annotation",
+    "text",
+    "typescript",
+    "textmarker"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.1"
+  }
+}
